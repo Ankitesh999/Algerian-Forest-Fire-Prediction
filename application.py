@@ -29,8 +29,7 @@ def predict_datapoint():
         Region = int(request.form['region'])
 
         scaled_data = scaler.transform([[Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes, Region]])
-        new_data_scaled = scaler.transform([[Temperature, RH, Ws, Rain, FFMC, DMC, ISI, Classes, Region]])
-
+        
         result = ridge_model.predict(scaled_data)
 
         return render_template('home.html', result=result[0])
